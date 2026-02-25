@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>미드나잇 이스케이프 | 방탈출 안내</title>
+  <meta name="description" content="방탈출 테마, 가격, 시간표, 예약/문의, FAQ를 한눈에 보는 안내 사이트" />
+  <style>
+    :root{
+      --bg:#0b0f17; --card:#111827; --muted:#9ca3af; --text:#e5e7eb;
+      --brand:#7c3aed; --brand2:#22c55e; --line:#1f2937; --warn:#f59e0b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --r:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo","Noto Sans KR", sans-serif;
+      background: radial-gradient(1200px 800px at 15% 10%, rgba(124,58,237,.20), transparent 55%),
+                  radial-gradient(900px 700px at 85% 30%, rgba(34,197,94,.14), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:24px}
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(11,15,23,.75); backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(31,41,55,.7);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 24px;
+      max-width:1100px; margin:0 auto;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, var(--brand), #06b6d4);
+      box-shadow: 0 10px 30px rgba(124,58,237,.25);
+    }
+    .brand b{letter-spacing:.2px}
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap}
+    .navlinks a{
+      padding:8px 10px; border-radius:10px; color:var(--muted);
+      transition:.15s ease;
+    }
+    .navlinks a:hover{color:var(--text); background: rgba(255,255,255,.06)}
+    .cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px; border-radius:12px;
+      cursor:pointer;
+      transition:.15s ease;
+      box-shadow: none;
+      font-weight:600;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10)}
+    .btn.primary{
+      border-color: rgba(124,58,237,.55);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(59,130,246,.85));
+      box-shadow: 0 12px 28px rgba(124,58,237,.22);
+    }
+    .btn.success{
+      border-color: rgba(34,197,94,.55);
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.85));
+      box-shadow: 0 12px 28px rgba(34,197,94,.18);
+    }
+
+    .hero{
+      padding:42px 0 24px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+    .hcard{
+      background: linear-gradient(180deg, rgba(17,24,39,.92), rgba(17,24,39,.72));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--r);
+      padding:22px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hcard:before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:240px; height:240px;
+      background: radial-gradient(circle, rgba(124,58,237,.35), transparent 60%);
+      transform: rotate(25deg);
+      pointer-events:none;
+    }
+    .kicker{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size:13px;
+    }
+    .kdot{width:8px; height:8px; border-radius:999px; background: var(--brand2); box-shadow:0 0 18px rgba(34,197,94,.5)}
+    h1{margin:14px 0 10px; font-size:36px; line-height:1.15}
+    .sub{color:var(--muted); margin:0 0 16px; font-size:15px; line-height:1.6}
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .mini{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:12px;
+    }
+    .mini b{display:block; margin-bottom:6px}
+    .mini span{color:var(--muted); font-size:13px}
+    .panel{
+      display:flex; flex-direction:column; gap:12px;
+    }
+
+    section{padding:16px 0}
+    .title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin-bottom:10px;
+    }
+    .title h2{margin:0; font-size:22px}
+    .title p{margin:0; color:var(--muted); font-size:14px}
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+    }
+    .card{
+      grid-column: span 4;
+      background: rgba(17,24,39,.75);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--r);
+      padding:16px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    @media(max-width: 980px){ .card{grid-column: span 6;} }
+    @media(max-width: 640px){ .card{grid-column: span 12;} }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; color:var(--muted);
+      padding:6px 10px; border-radius:999px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .dot{width:8px; height:8px; border-radius:999px; background: var(--brand)}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .pill{
+      font-size:12px; color:var(--muted);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:6px 10px; border-radius:999px;
+    }
+    .desc{color:var(--muted); margin:10px 0 0; line-height:1.6; font-size:14px}
+
+    .table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(17,24,39,.65);
+      box-shadow: var(--shadow);
+    }
+    .table th, .table td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:left;
+      font-size:14px;
+    }
+    .table th{color:var(--muted); font-weight:600; background: rgba(255,255,255,.03)}
+    .table tr:last-child td{border-bottom:0}
+    .hint{color:var(--muted); font-size:13px; margin-top:10px; line-height:1.6}
+
+    details{
+      background: rgba(17,24,39,.65);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding:12px 14px;
+      box-shadow: var(--shadow);
+    }
+    details + details{margin-top:10px}
+    summary{cursor:pointer; font-weight:700}
+    details p{margin:8px 0 0; color:var(--muted); line-height:1.6}
+
+    .footer{
+      padding:28px 0 40px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footgrid{
+      display:grid; grid-template-columns:1.2fr .8fr; gap:12px;
+    }
+    @media(max-width: 900px){ .footgrid{grid-template-columns:1fr} }
+    .note{
+      border-left: 3px solid var(--warn);
+      padding:10px 12px;
+      background: rgba(245,158,11,.08);
+      border-radius: 12px;
+      color: #fcd34d;
+    }
+    .mapbox{
+      width:100%; aspect-ratio: 16/10;
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(circle at 30% 40%, rgba(59,130,246,.18), transparent 55%),
+        radial-gradient(circle at 70% 55%, rgba(34,197,94,.12), transparent 60%),
+        rgba(255,255,255,.03);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--muted);
+    }
+    .toast{
+      position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%);
+      background: rgba(17,24,39,.92);
+      border:1px solid rgba(255,255,255,.14);
+      padding:10px 12px; border-radius: 14px;
+      box-shadow: var(--shadow);
+      display:none; gap:10px; align-items:center;
+      max-width: min(520px, calc(100% - 24px));
+      z-index: 99;
+    }
+    .toast.show{display:flex}
+    .toast small{color:var(--muted)}
+    .hr{height:1px; background:rgba(255,255,255,.08); margin:10px 0}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="#top" aria-label="홈으로">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <b>미드나잇 이스케이프</b><br/>
+        <span style="color:var(--muted);font-size:12px">방탈출 테마 안내 & 예약</span>
+      </div>
+    </a>
+
+    <nav class="navlinks" aria-label="페이지 내 이동">
+      <a href="#themes">테마</a>
+      <a href="#pricing">가격</a>
+      <a href="#timetable">시간표</a>
+      <a href="#faq">FAQ</a>
+      <a href="#location">오시는 길</a>
+    </nav>
+
+    <div class="cta">
+      <button class="btn" id="btnCall">전화 문의</button>
+      <button class="btn primary" id="btnReserve">예약하기</button>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero" aria-label="메인 소개">
+    <div class="hcard">
+      <div class="kicker"><span class="kdot"></span> 오늘도 탈출 가능 · 당일 예약 OK(잔여 타임 있을 때)</div>
+      <h1>몰입감 끝판왕 방탈출,<br/>한 번에 싹 정리된 안내 페이지</h1>
+      <p class="sub">
+        테마/난이도/소요시간/가격/시간표/주의사항/FAQ까지 한 페이지에서 확인하고,
+        바로 예약 또는 문의로 연결됩니다.
+      </p>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+        <button class="btn success" id="btnReserve2">지금 예약</button>
+        <button class="btn" id="btnKakao">카톡 문의</button>
+        <button class="btn" id="btnCopyInfo">정보 복사</button>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="grid2">
+        <div class="mini">
+          <b>운영 시간</b>
+          <span>매일 11:00 ~ 23:00 (연중무휴 가정)</span>
+        </div>
+        <div class="mini">
+          <b>위치</b>
+          <span>서울 ○○구 ○○로 123, 3F</span>
+        </div>
+        <div class="mini">
+          <b>추천 인원</b>
+          <span>2~4인 (테마별 상이)</span>
+        </div>
+        <div class="mini">
+          <b>문의</b>
+          <span class="mono">02-123-4567</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="hcard" style="padding:18px">
+        <div class="badge"><span class="dot"></span> 방문 전 체크</div>
+        <p class="desc" style="margin-top:10px">
+          ⏱️ <b>10분 전 도착</b> 권장 · 🎒 짐 보관 가능 · 📸 내부 촬영 금지 · 🚫 음주 입장 불가
+        </p>
+        <div class="note" style="margin-top:12px">
+          <b>지각 시</b> 진행 시간이 줄어들 수 있어요. (환불/연장 불가)
+        </div>
+      </div>
+
+      <div class="hcard" style="padding:18px">
+        <div class="badge"><span class="dot" style="background:#06b6d4"></span> 이벤트</div>
+        <p class="desc" style="margin-top:10px">
+          🎉 생일 주간 할인 / 🎓 학생 할인 / 👫 커플 할인 등을 운영한다면
+          여기에 한 줄로 딱 박아두면 전환이 좋아요.
+        </p>
+        <button class="btn" id="btnEvent">이벤트 자세히</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes" aria-label="테마 소개">
+    <div class="title">
+      <div>
+        <h2>테마</h2>
+        <p>원하는 테마 카드만 수정해서 바로 운영 가능</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="badge"><span class="dot"></span> 스릴러 · 추리</div>
+        <h3 style="margin:12px 0 6px">〈블랙룸: 사라진 기록〉</h3>
+        <div class="meta">
+          <span class="pill">난이도 ★★★★☆</span>
+          <span class="pill">소요 60분</span>
+          <span class="pill">추천 2~4인</span>
+        </div>
+        <p class="desc">실종 사건의 단서를 따라가며 폐쇄된 연구실의 비밀을 푸는 테마.</p>
+      </article>
+
+      <article class="card">
+        <div class="badge"><span class="dot" style="background:#22c55e"></span> 코믹 · 어드벤처</div>
+        <h3 style="margin:12px 0 6px">〈쿠키 왕국 대탈출〉</h3>
+        <div class="meta">
+          <span class="pill">난이도 ★★☆☆☆</span>
+          <span class="pill">소요 60분</span>
+          <span class="pill">추천 2~5인</span>
+        </div>
+        <p class="desc">기발한 장치와 가벼운 퍼즐로 초보자도 재미있게 즐기는 테마.</p>
+      </article>
+
+      <article class="card">
+        <div class="badge"><span class="dot" style="background:#f59e0b"></span> 공포 · 몰입</div>
+        <h3 style="margin:12px 0 6px">〈새벽 3시의 병동〉</h3>
+        <div class="meta">
+          <span class="pill">난이도 ★★★☆☆</span>
+          <span class="pill">소요 75분</span>
+          <span class="pill">추천 2~4인</span>
+        </div>
+        <p class="desc">어둠 속 단서, 제한된 시야… 심장 쫄깃한 공포 테마.</p>
+      </article>
+    </div>
+
+    <p class="hint">※ 위 테마 이름/설명/난이도/시간/인원은 예시야. 실제 테마로 바꿔주면 끝.</p>
+  </section>
+
+  <section id="pricing" aria-label="가격 안내">
+    <div class="title">
+      <div>
+        <h2>가격</h2>
+        <p>인원별 / 테마별 정책을 깔끔하게 보여줘요</p>
+      </div>
+    </div>
+
+    <table class="table" role="table" aria-label="가격표">
+      <thead>
+        <tr>
+          <th>인원</th>
+          <th>1인 가격</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2인</td>
+          <td>₩ 25,000</td>
+          <td>기본</td>
+        </tr>
+        <tr>
+          <td>3인</td>
+          <td>₩ 23,000</td>
+          <td>인원 할인</td>
+        </tr>
+        <tr>
+          <td>4인</td>
+          <td>₩ 21,000</td>
+          <td>인원 할인</td>
+        </tr>
+        <tr>
+          <td>5인</td>
+          <td>₩ 20,000</td>
+          <td>테마/지점에 따라 제한</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="hint">
+      환불/변경 규정 예시: <b>예약 24시간 전</b>까지 100% 환불, 이후 환불 불가.
+      (형네 정책에 맞게 문구만 수정)
+    </p>
+  </section>
+
+  <section id="timetable" aria-label="시간표">
+    <div class="title">
+      <div>
+        <h2>시간표</h2>
+        <p>실시간 잔여를 붙일 수 없으면, 기본 타임테이블이라도 신뢰가 올라가요</p>
+      </div>
+      <button class="btn" id="btnScrollReserve">예약 섹션으로</button>
+    </div>
+
+    <table class="table" role="table" aria-label="타임테이블">
+      <thead>
+        <tr>
+          <th>타임</th>
+          <th>가능 테마</th>
+          <th>메모</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11:00 / 12:30</td>
+          <td>전 테마</td>
+          <td>오픈 타임</td>
+        </tr>
+        <tr>
+          <td>14:00 / 15:30</td>
+          <td>전 테마</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>17:00 / 18:30</td>
+          <td>전 테마</td>
+          <td>피크</td>
+        </tr>
+        <tr>
+          <td>20:00 / 21:30 / 23:00</td>
+          <td>테마별 상이</td>
+          <td>마감</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="hint">실예약은 “예약하기” 버튼을 네이버 예약/카카오 예약/구글폼 등으로 연결하면 끝.</p>
+  </section>
+
+  <section id="faq" aria-label="자주 묻는 질문">
+    <div class="title">
+      <div>
+        <h2>FAQ</h2>
+        <p>전화/DM으로 들어오는 질문을 여기로 몰아주면 운영이 편해져요</p>
+      </div>
+    </div>
+
+    <details>
+      <summary>초보인데 가능한가요?</summary>
+      <p>가능해요. 힌트 시스템이 있고, 추천 난이도(★)를 참고하면 실패 확률이 확 내려가요.</p>
+    </details>
+    <details>
+      <summary>지각하면 어떻게 되나요?</summary>
+      <p>다음 팀 스케줄 때문에 보통 <b>진행 시간이 차감</b>돼요. 10분 전 도착 권장!</p>
+    </details>
+    <details>
+      <summary>사진/영상 촬영 가능한가요?</summary>
+      <p>스포일러 방지를 위해 룸 내부 촬영은 제한되는 경우가 많아요. 포토존은 가능!</p>
+    </details>
+    <details>
+      <summary>주차가 있나요?</summary>
+      <p>건물/인근 유료주차 이용(예시). 실제 주차 안내로 문구만 바꾸면 됩니다.</p>
+    </details>
+  </section>
+
+  <section id="location" aria-label="오시는 길">
+    <div class="title">
+      <div>
+        <h2>오시는 길</h2>
+        <p>지도 임베드/주소/대중교통 안내를 넣어두면 방문률이 올라가요</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card" style="grid-column: span 7;">
+        <div class="mapbox">
+          지도 넣을 자리 (구글맵/네이버지도 iframe 넣으면 됨)
+        </div>
+        <p class="hint">
+          구글맵: “공유 → 지도 퍼가기” iframe 코드를 여기 <b>mapbox</b> 위치에 붙이면 돼.
+        </p>
+      </div>
+      <div class="card" style="grid-column: span 5;">
+        <div class="badge"><span class="dot"></span> 주소/교통</div>
+        <h3 style="margin:12px 0 6px">서울 ○○구 ○○로 123, 3F</h3>
+        <p class="desc">
+          지하철: ○○역 3번 출구 도보 4분<br/>
+          버스: ○○정류장 하차 도보 2분<br/>
+          주차: 인근 유료주차장 이용
+        </p>
+        <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
+          <button class="btn" id="btnCopyAddr">주소 복사</button>
+          <button class="btn" id="btnOpenMap">지도 열기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reserve" aria-label="예약/문의">
+    <div class="title">
+      <div>
+        <h2>예약 / 문의</h2>
+        <p>아래 링크만 바꾸면 운영용으로 바로 쓸 수 있어요</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card" style="grid-column: span 6;">
+        <div class="badge"><span class="dot" style="background:#3b82f6"></span> 예약 링크</div>
+        <p class="desc">
+          아래 버튼의 링크를 <b>네이버예약 / 카카오예약 / 구글폼</b>으로 바꿔주세요.
+        </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <button class="btn primary" id="btnReserve3">예약 페이지 열기</button>
+          <button class="btn" id="btnCopyReserve">예약 링크 복사</button>
+        </div>
+        <p class="hint">현재는 예시 링크로 되어 있어요.</p>
+      </div>
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="badge"><span class="dot" style="background:#22c55e"></span> 빠른 문의</div>
+        <p class="desc">
+          전화/카톡/인스타 DM 등 편한 채널로 연결해두면 전환이 좋아요.
+        </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <button class="btn" id="btnCall2">전화 걸기</button>
+          <button class="btn success" id="btnKakao2">카톡 문의</button>
+          <button class="btn" id="btnInsta">인스타 DM</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" aria-label="푸터">
+    <div class="footgrid">
+      <div>
+        <b style="color:var(--text)">미드나잇 이스케이프</b>
+        <div style="margin-top:6px">
+          사업자 정보/이용약관/개인정보처리방침 링크 등을 여기에 넣어도 좋아요.
+        </div>
+        <div class="hr"></div>
+        <div>© <span id="year"></span> Midnight Escape. All rights reserved.</div>
+      </div>
+      <div>
+        <div class="note">
+          운영 팁: “테마 카드 3개 + 가격 + 시간표 + 예약 버튼”만 있어도 안내 페이지로는 충분히 먹혀요.
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <b id="toastTitle">완료</b>
+  <small id="toastMsg">클립보드에 복사했어요.</small>
+</div>
+
+<script>
+  // ====== 설정값(형네 정보로 바꾸기) ======
+  const CONFIG = {
+    phone: "02-123-4567",
+    kakaoLink: "https://open.kakao.com/o/xxxxxxxx",       // 오픈카톡 링크
+    reserveLink: "https://booking.naver.com/booking/xxx", // 네이버예약/구글폼 링크
+    instaDmLink: "https://instagram.com/your_account",    // 인스타 계정/DM 링크
+    mapLink: "https://maps.google.com/?q=서울%20○○구%20○○로%20123" // 지도 링크
+  };
+
+  // ====== 유틸 ======
+  const $ = (id) => document.getElementById(id);
+  const toast = $("toast");
+  const toastTitle = $("toastTitle");
+  const toastMsg = $("toastMsg");
+  let toastTimer = null;
+
+  function showToast(title, msg){
+    toastTitle.textContent = title;
+    toastMsg.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=> toast.classList.remove("show"), 2200);
+  }
+
+  async function copyText(text){
+    try{
+      await navigator.clipboard.writeText(text);
+      showToast("복사 완료", "클립보드에 복사했어요.");
+    }catch(e){
+      // 일부 환경에서 clipboard 권한 실패 시 대체
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      showToast("복사 완료", "클립보드에 복사했어요.");
+    }
+  }
+
+  function openLink(url){
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  // ====== 버튼 액션 ======
+  $("year").textContent = new Date().getFullYear();
+
+  const call = () => {
+    // 모바일은 tel:이 자연스러움
+    location.href = "tel:" + CONFIG.phone.replaceAll("-", "");
+  };
+
+  const reserve = () => openLink(CONFIG.reserveLink);
+  const kakao = () => openLink(CONFIG.kakaoLink);
+  const insta = () => openLink(CONFIG.instaDmLink);
+  const openMap = () => openLink(CONFIG.mapLink);
+
+  $("btnCall").addEventListener("click", call);
+  $("btnCall2").addEventListener("click", call);
+
+  $("btnReserve").addEventListener("click", reserve);
+  $("btnReserve2").addEventListener("click", reserve);
+  $("btnReserve3").addEventListener("click", reserve);
+
+  $("btnKakao").addEventListener("click", kakao);
+  $("btnKakao2").addEventListener("click", kakao);
+
+  $("btnInsta").addEventListener("click", insta);
+  $("btnOpenMap").addEventListener("click", openMap);
+
+  $("btnEvent").addEventListener("click", () => {
+    showToast("이벤트", "여기 문구/링크를 실제 이벤트 페이지로 연결하면 돼요.");
+  });
+
+  $("btnScrollReserve").addEventListener("click", () => {
+    document.querySelector("#reserve").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  $("btnCopyAddr").addEventListener("click", () => copyText("서울 ○○구 ○○로 123, 3F"));
+  $("btnCopyReserve").addEventListener("click", () => copyText(CONFIG.reserveLink));
+
+  $("btnCopyInfo").addEventListener("click", () => {
+    const text =
+`[미드나잇 이스케이프]
+- 위치: 서울 ○○구 ○○로 123, 3F
+- 운영: 11:00~23:00
+- 문의: ${CONFIG.phone}
+- 예약: ${CONFIG.reserveLink}`;
+    copyText(text);
+  });
+</script>
+</body>
+</html>
