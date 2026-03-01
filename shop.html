@@ -83,17 +83,7 @@
       .shopGrid{grid-template-columns:1fr;}
     }
  /* ✅ shop.html 영상 크기 = cafe.html과 동일하게 강제 */
-.topVideo .videoWrap{
-  width:100% !important;
-  max-width:500px !important;
-  aspect-ratio:9 / 16 !important;
-}
 
-@media (max-width:900px){
-  .topVideo .videoWrap{
-    max-width:420px !important;
-  }
-}
 
   .topVideo{
   width:100%;
@@ -137,14 +127,14 @@
       </a>
     </div>
 
-    <!-- ✅ 메뉴: 기존 탭 + 매점 추가 (매점만 primary) -->
-<div class="menuRow">
-  <a class="btn" href="./cafe.html">카페</a>
-  <a class="btn" href="./school.html">스쿨</a>
-  <a class="btn" href="./escape.html">방탈출</a>
-  <a class="btn primary" href="./shop.html">매점</a>
-  <a class="btn" href="./discount.html">할인</a>
-</div>
+    <div class="menuRow">
+      <a class="btn" href="./cafe.html">카페</a>
+      <a class="btn" href="./school.html">스쿨</a>
+      <a class="btn" href="./escape.html">방탈출</a>
+      <a class="btn primary" href="./shop.html">매점</a>
+      <a class="btn" href="./discount.html">할인</a>
+    </div>
+  </div>
 </header>
 
 <main class="container">
