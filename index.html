@@ -12,24 +12,54 @@
   <!-- ✅ index 전용 약간의 스타일(필요 최소) -->
   <style>
     /* style.css는 공통, 아래는 index 전용 보충 */
-    .heroMain{
-      margin:18px 0;
-      border:1px solid var(--line);
-      border-radius: calc(var(--radius) + 8px);
-      overflow:hidden;
-      background:#091221;
-    }
-    .heroMain .cover{
-      height:340px;
-      background-image:url('./images/home_banner.jpg');
-      background-size:cover;
-      background-position:center;
-      position:relative;
-    }
-    .heroMain .cover::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.12));
+.heroMain{
+  margin:18px 0;
+  border:1px solid var(--line);
+  border-radius: calc(var(--radius) + 8px);
+  overflow:hidden;
+  background:#091221;
+}
+
+/* ✅ 이미지가 절대 안 잘리게 */
+.heroMain .cover{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:14px;
+  background: rgba(255,255,255,.03);
+}
+
+/* ✅ 핵심: contain + auto height */
+.heroMain .heroImg{
+  width:100%;
+  height:auto;
+  max-width: 980px;      /* 컨테이너 폭에 맞춤 */
+  max-height: 520px;     /* 너무 커지지 않게 제한 */
+  object-fit: contain;   /* 절대 안 잘림 */
+  image-rendering: auto; /* 깨짐 방지 */
+}
+
+/* 이미지 아래 텍스트 영역 */
+.heroMain .heroText{
+  padding: 0 18px 18px;
+}
+
+.heroMain .heroText h1{
+  font-size: 28px;
+  margin: 10px 0 6px;
+  letter-spacing: -.02em;
+}
+
+.heroMain .heroText p{
+  margin:0;
+  color: rgba(229,231,235,.88);
+  font-weight:650;
+}
+
+@media (max-width: 900px){
+  .heroMain .heroImg{max-height: 420px;}
+  .heroMain .heroText h1{font-size:24px;}
+}
     }
     .heroMain .body{
       position:absolute;
