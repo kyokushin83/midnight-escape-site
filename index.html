@@ -33,10 +33,10 @@
 .heroMain .heroImg{
   width:100%;
   height:auto;
-  max-width: 980px;      /* 컨테이너 폭에 맞춤 */
-  max-height: 520px;     /* 너무 커지지 않게 제한 */
-  object-fit: contain;   /* 절대 안 잘림 */
-  image-rendering: auto; /* 깨짐 방지 */
+  max-width: 980px;
+  max-height: 520px;
+  object-fit: contain;
+  display:block;
 }
 
 /* 이미지 아래 텍스트 영역 */
@@ -56,57 +56,46 @@
   font-weight:650;
 }
 
+.heroMain .actions{margin-top:14px}
+
+.sectionTitle{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:12px; flex-wrap:wrap;
+  margin:26px 0 12px;
+}
+.sectionTitle h2{margin:0; font-size:22px; letter-spacing:-.02em}
+.sectionTitle .muted{margin:0}
+
+.eventGrid{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
+.storeGrid{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
+.storeCardThumb{
+  height:150px;
+  background:#0b1220;
+  background-size:cover;
+  background-position:center;
+  border-radius: 12px;
+  border:1px solid var(--line);
+}
+
+.filterRow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 12px}
+.filterBtn{
+  padding:8px 12px; border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--muted);
+  cursor:pointer; font-weight:900; font-size:13px;
+}
+.filterBtn.active{
+  background: rgba(34,197,94,.18);
+  border-color: rgba(34,197,94,.35);
+  color: var(--text);
+}
+
 @media (max-width: 900px){
   .heroMain .heroImg{max-height: 420px;}
   .heroMain .heroText h1{font-size:24px;}
+  .eventGrid,.storeGrid{grid-template-columns:1fr}
 }
-    }
-    .heroMain .body{
-      position:absolute;
-      left:18px; right:18px; bottom:18px;
-      max-width:720px;
-    }
-    .heroMain h1{font-size:34px; margin:0 0 8px; letter-spacing:-.03em}
-    .heroMain p{margin:0; color:rgba(229,231,235,.88); font-weight:650}
-    .heroMain .actions{margin-top:14px}
-
-    .sectionTitle{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:12px; flex-wrap:wrap;
-      margin:26px 0 12px;
-    }
-    .sectionTitle h2{margin:0; font-size:22px; letter-spacing:-.02em}
-    .sectionTitle .muted{margin:0}
-
-    .eventGrid{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
-    .storeGrid{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
-    .storeCardThumb{
-      height:150px;
-      background:#0b1220;
-      background-size:cover;
-      background-position:center;
-      border-radius: 12px;
-      border:1px solid var(--line);
-    }
-
-    .filterRow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 12px}
-    .filterBtn{
-      padding:8px 12px; border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--muted);
-      cursor:pointer; font-weight:900; font-size:13px;
-    }
-    .filterBtn.active{
-      background: rgba(34,197,94,.18);
-      border-color: rgba(34,197,94,.35);
-      color: var(--text);
-    }
-
-    @media (max-width: 900px){
-      .heroMain .cover{height:300px}
-      .eventGrid,.storeGrid{grid-template-columns:1fr}
-    }
   </style>
 </head>
 
