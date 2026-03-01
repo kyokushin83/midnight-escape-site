@@ -8,7 +8,40 @@
 <link rel="stylesheet" href="./assets/style.css" />
 
 <style>
-/* ===== 헤더 2줄 구조 (왼쪽 정렬 유지) ===== */
+.zoneMapWrap{
+  display:flex;
+  gap:14px;
+  align-items:stretch;
+}
+
+.zoneCard{
+  margin:0;
+  flex:1;
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  background:#0b1220;
+}
+
+.zoneTitle{
+  padding:10px 12px;
+  font-weight:900;
+  border-bottom:1px solid var(--line);
+}
+
+.zoneCard img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain; /* 지도는 안 잘리게 */
+}
+
+/* 모바일: 세로로 쌓기 */
+@media (max-width:900px){
+  .zoneMapWrap{flex-direction:column;}
+}
+  
+  /* ===== 헤더 2줄 구조 (왼쪽 정렬 유지) ===== */
 
 .topRow{
   display:flex;
@@ -53,23 +86,19 @@
 }
 
 /* ===== 지도 이미지 섹션 ===== */
-.mapSection{
-  margin: 6px 0 22px;
-}
-.mapBox{
-  width:100%;
-  border-radius:16px;
-  border:1px solid var(--line);
-  overflow:hidden;
-  background:#0b1220;
-}
-.mapBox img{
-  width:100%;
-  height:auto;
-  display:block;
-  object-fit:contain; /* 지도는 잘리면 안 됨 */
-}
+<section class="mapSection" aria-label="카페PPP 존 지도">
+  <div class="zoneMapWrap">
+    <figure class="zoneCard">
+      <div class="zoneTitle">카페PPP E존</div>
+      <img src="./images/ezone.png" alt="카페PPP E존 지도">
+    </figure>
 
+    <figure class="zoneCard">
+      <div class="zoneTitle">카페PPP D존</div>
+      <img src="./images/dzone.png" alt="카페PPP D존 지도">
+    </figure>
+  </div>
+</section>
 /* ===== 메인 타이틀 ===== */
 .heroMain{
   padding: 18px 0 10px;  /* 영상/지도 들어가니 타이틀은 컴팩트 */
