@@ -50,13 +50,19 @@
       padding:18px 0 6px;
     }
 
-    .menuRow{
-      display:flex;
-      gap:12px;
-      justify-content:flex-start; /* 🔥 가운데 아님 */
-      padding-bottom:14px;
-      flex-wrap:wrap;
-    }
+  .menuRow{
+  display:flex;
+  gap:12px;
+  justify-content:flex-start;
+  padding-bottom:14px;
+  flex-wrap:nowrap;          /* ✅ 줄바꿈 금지 */
+  overflow-x:auto;           /* ✅ 가로 스크롤 허용 */
+  -webkit-overflow-scrolling: touch;
+}
+
+.menuRow::-webkit-scrollbar {
+  display:none;              /* ✅ 스크롤바 숨김 */
+}
 
     .menuRow .btn{
       font-weight:700;
