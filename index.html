@@ -8,7 +8,29 @@
 <link rel="stylesheet" href="./assets/style.css" />
 
 <style>
+/* ===== 상단 쇼츠 영상 ===== */
+.topVideo{
+  width:100%;
+  margin-bottom:30px;
+  display:flex;
+  justify-content:center;
+}
 
+.videoWrap{
+  position:relative;
+  width:100%;
+  max-width:500px;     /* 너무 넓어지지 않게 */
+  aspect-ratio:9 / 16; /* 🔥 쇼츠 세로 비율 */
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.videoWrap iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
 /* ===== 메인 타이틀 ===== */
 .heroMain{
   padding:80px 0 20px;
@@ -130,7 +152,17 @@
 </header>
 
 <main class="container">
-
+<section class="topVideo">
+  <div class="videoWrap">
+    <iframe
+      src="https://www.youtube.com/embed/mt9BRjpQHso?autoplay=1&mute=1&controls=0&loop=1&playlist=mt9BRjpQHso&modestbranding=1&rel=0"
+      title="카페피피피 쇼츠"
+      frameborder="0"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
 <!-- ===== 메인 ===== -->
 <section class="heroMain">
   <h1>체험형 플레이스, 카페피피피</h1>
