@@ -4,69 +4,40 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>카페ppp | 500평 규모의 체험형 플레이스</title>
-<meta name="description" content="500평 규모의 체험형 복합 공간 카페ppp." />
+<meta name="description" content="500평 규모의 체험형 플레이스, 카페ppp" />
 <link rel="stylesheet" href="./assets/style.css" />
 
 <style>
-
-/* ===== 메인 텍스트 ===== */
+/* ====== 상단 타이틀(두 줄만) ====== */
 .heroMain{
-  padding:90px 20px 60px;
+  padding: 70px 0 20px;
   text-align:center;
 }
-
 .heroMain h1{
+  margin:0;
   font-size:42px;
-  margin:0 0 10px;
   font-weight:900;
   letter-spacing:-.02em;
+  line-height:1.1;
 }
 
-.heroMain .brand{
-  font-size:52px;
-  font-weight:900;
-  background:linear-gradient(90deg,#22c55e,#60a5fa);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  margin-bottom:20px;
-}
-
-.heroMain p{
-  margin:0;
-  font-size:18px;
-  color:var(--muted);
-  font-weight:600;
-}
-
-/* ===== 공통 섹션 타이틀 ===== */
+/* ====== 매장: 최대한 위로 붙이기 ====== */
 .sectionTitle{
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
-  margin:50px 0 16px;
   flex-wrap:wrap;
+  gap:12px;
+  margin: 14px 0 10px; /* 🔥 위쪽 여백 최소 */
 }
+.sectionTitle h2{margin:0; font-size:22px; letter-spacing:-.02em}
 
-.sectionTitle h2{
-  margin:0;
-  font-size:24px;
-}
-
-/* ===== 이벤트 ===== */
-.eventGrid{
-  display:grid;
-  gap:16px;
-  grid-template-columns:repeat(3,1fr);
-}
-
-/* ===== 매장 ===== */
 .filterRow{
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  margin-bottom:16px;
+  margin: 0 0 12px; /* 🔥 위쪽 여백 최소 */
 }
-
 .filterBtn{
   padding:8px 14px;
   border-radius:999px;
@@ -77,62 +48,62 @@
   font-weight:800;
   font-size:13px;
 }
-
 .filterBtn.active{
   background:rgba(34,197,94,.15);
   border-color:rgba(34,197,94,.4);
   color:var(--text);
 }
 
+/* 카드 상단 이미지가 바로 보이게 */
 .storeGrid{
   display:grid;
   gap:16px;
   grid-template-columns:repeat(3,1fr);
 }
-
+.card{padding:14px}
 .storeCardThumb{
-  height:160px;
+  height:180px;                 /* 🔥 이미지 영역 크게 */
   background-size:cover;
   background-position:center;
   border-radius:12px;
   border:1px solid var(--line);
   margin-bottom:10px;
 }
-
 .card h3{
-  margin:0 0 6px;
+  margin:0;
   font-size:18px;
 }
 
-.card p{
-  margin:0;
-  color:var(--muted);
-  font-size:14px;
+/* ====== 이벤트를 아래로 내림 ====== */
+.eventsWrap{
+  margin-top: 46px; /* 🔥 매장 끝나고 여유 */
+}
+.eventGrid{
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(3,1fr);
 }
 
-/* ===== 반응형 ===== */
 @media (max-width:900px){
-  .heroMain h1{font-size:28px;}
-  .heroMain .brand{font-size:36px;}
-  .eventGrid,
-  .storeGrid{grid-template-columns:1fr;}
+  .heroMain h1{font-size:28px}
+  .storeGrid,.eventGrid{grid-template-columns:1fr}
+  .storeCardThumb{height:200px} /* 모바일은 더 크게 보여도 좋음 */
 }
-
 </style>
 </head>
 
 <body>
 
-<header class="header">
+<header class="header" id="top">
   <div class="container">
     <div class="inner">
-      <a class="brand" href="#">
+      <a class="brand" href="#top">
         <span class="logo">P</span>
         <span>카페ppp</span>
       </a>
       <div style="display:flex; gap:10px;">
+        <a class="btn primary" href="#stores">매장</a>
         <a class="btn" href="#events">이벤트</a>
-        <a class="btn primary" href="#stores">매장 보기</a>
       </div>
     </div>
   </div>
@@ -140,93 +111,114 @@
 
 <main class="container">
 
-<!-- ===== 메인 텍스트 ===== -->
-<section class="heroMain">
-  <h1>500평 규모의 체험형 플레이스</h1>
-  <div class="brand">CafePPP</div>
-  <p>카페 · 키즈 · 병원 · 미용 · 용품을 한 공간에서</p>
-</section>
+  <!-- ✅ 타이틀(요청대로 두 줄만, 같은 크기) -->
+  <section class="heroMain">
+    <h1>500평 규모의 체험형 플레이스</h1>
+    <h1>카페ppp</h1>
+  </section>
 
+  <!-- ✅ 바로 매장 -->
+  <div class="sectionTitle" id="stores">
+    <h2>매장</h2>
+  </div>
 
-<!-- ===== 이벤트 섹션 ===== -->
-<div class="sectionTitle" id="events">
-  <h2>이벤트</h2>
-</div>
+  <div class="filterRow" aria-label="카테고리 필터(임시)">
+    <button class="filterBtn active" type="button">전체</button>
+    <button class="filterBtn" type="button">동물카페</button>
+    <button class="filterBtn" type="button">체험·놀이</button>
+    <button class="filterBtn" type="button">케어·의료</button>
+    <button class="filterBtn" type="button">리테일</button>
+  </div>
 
-<section class="eventGrid">
-  <article class="card">
-    <h3>3월 방문 이벤트</h3>
-    <p>기간: 2026.03.01 ~ 03.31</p>
-  </article>
+  <section class="storeGrid">
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/catcafe_cover.jpg');"></div>
+      <h3>고양이카페</h3>
+    </article>
 
-  <article class="card">
-    <h3>신규 매장 오픈 기념</h3>
-    <p>특별 혜택 제공</p>
-  </article>
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/parrot.jpg');"></div>
+      <h3>앵무새카페</h3>
+    </article>
 
-  <article class="card">
-    <h3>스탬프 미션 (Coming Soon)</h3>
-    <p>곧 공개됩니다</p>
-  </article>
-</section>
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/rabbit.jpg');"></div>
+      <h3>토끼카페</h3>
+    </article>
 
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/dogcafe.jpg');"></div>
+      <h3>애견카페</h3>
+    </article>
 
-<!-- ===== 매장 ===== -->
-<div class="sectionTitle" id="stores">
-  <h2>매장</h2>
-</div>
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/coton.jpg');"></div>
+      <h3>꼬똥 애견카페</h3>
+    </article>
 
-<div class="filterRow">
-  <button class="filterBtn active">전체</button>
-  <button class="filterBtn">동물카페</button>
-  <button class="filterBtn">체험·놀이</button>
-  <button class="filterBtn">케어·의료</button>
-  <button class="filterBtn">리테일</button>
-</div>
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/claw.jpg');"></div>
+      <h3>인형뽑기카페</h3>
+    </article>
 
-<section class="storeGrid">
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/rc.jpg');"></div>
+      <h3>RC카카페</h3>
+    </article>
 
-  <article class="card">
-    <div class="storeCardThumb" style="background-image:url('./images/catcafe_cover.jpg');"></div>
-    <h3>고양이카페</h3>
-    <p>동물카페</p>
-  </article>
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/kids.jpg');"></div>
+      <h3>애니멀 키즈카페</h3>
+    </article>
 
-  <article class="card">
-    <div class="storeCardThumb" style="background-image:url('./images/parrot.jpg');"></div>
-    <h3>앵무새카페</h3>
-    <p>동물카페</p>
-  </article>
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/grooming.jpg');"></div>
+      <h3>애견미용실</h3>
+    </article>
 
-  <article class="card">
-    <div class="storeCardThumb" style="background-image:url('./images/rabbit.jpg');"></div>
-    <h3>토끼카페</h3>
-    <p>동물카페</p>
-  </article>
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/hospital.jpg');"></div>
+      <h3>동물병원</h3>
+    </article>
 
-  <article class="card">
-    <div class="storeCardThumb" style="background-image:url('./images/dogcafe.jpg');"></div>
-    <h3>애견카페</h3>
-    <p>동물카페</p>
-  </article>
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/healing.jpg');"></div>
+      <h3>힐링카페(발마사지)</h3>
+    </article>
 
-  <article class="card">
-    <div class="storeCardThumb" style="background-image:url('./images/kids.jpg');"></div>
-    <h3>애니멀 키즈카페</h3>
-    <p>체험·놀이</p>
-  </article>
+    <article class="card">
+      <div class="storeCardThumb" style="background-image:url('./images/shop.jpg');"></div>
+      <h3>반려동물 용품매장</h3>
+    </article>
+  </section>
 
-  <article class="card">
-    <div class="storeCardThumb" style="background-image:url('./images/hospital.jpg');"></div>
-    <h3>동물병원</h3>
-    <p>케어·의료</p>
-  </article>
+  <!-- ✅ 이벤트는 아래로 내림 -->
+  <div class="eventsWrap" id="events">
+    <div class="sectionTitle">
+      <h2>이벤트</h2>
+    </div>
 
-</section>
+    <section class="eventGrid">
+      <article class="card">
+        <h3 style="margin:0 0 6px;">3월 이벤트</h3>
+        <p class="muted" style="margin:0;">기간: 2026.03.01 ~ 03.31</p>
+      </article>
 
-<footer class="footer">
-  © <span id="year"></span> CafePPP
-</footer>
+      <article class="card">
+        <h3 style="margin:0 0 6px;">주말 체험 이벤트</h3>
+        <p class="muted" style="margin:0;">상시/주말 운영</p>
+      </article>
+
+      <article class="card">
+        <h3 style="margin:0 0 6px;">스탬프 미션(Coming soon)</h3>
+        <p class="muted" style="margin:0;">곧 공개</p>
+      </article>
+    </section>
+  </div>
+
+  <footer class="footer">
+    © <span id="year"></span> CafePPP
+  </footer>
 
 </main>
 
