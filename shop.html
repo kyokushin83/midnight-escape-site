@@ -1,1 +1,159 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>카페피피피 | 매점</title>
+  <meta name="description" content="카페피피피 매점" />
+  <link rel="stylesheet" href="./assets/style.css" />
 
+  <style>
+    /* 기존 페이지들과 톤 맞추기 (필요 최소만) */
+    .topRow{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      padding:18px 0 6px;
+    }
+    .menuRow{
+      display:flex;
+      gap:12px;
+      justify-content:flex-start;
+      padding-bottom:14px;
+      flex-wrap:wrap;
+    }
+    .menuRow .btn{font-weight:700;}
+
+    .heroMain{
+      padding: 26px 0 10px;
+      text-align:center;
+    }
+    .heroMain h1{
+      margin:0;
+      font-size:38px;
+      font-weight:900;
+      letter-spacing:-0.02em;
+    }
+    .sectionTitle{margin:20px 0 10px;}
+    .sectionTitle h2{margin:0;font-size:22px;}
+
+    .shopGrid{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(3,1fr);
+    }
+    .shopItem{
+      display:block;
+      text-decoration:none;
+      color:inherit;
+    }
+    .shopItem .card{padding:14px;}
+    .thumb{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius:12px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0b1220;
+      margin-bottom:10px;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+    .price{
+      margin-top:6px;
+      font-weight:800;
+    }
+
+    @media (max-width:900px){
+      .heroMain h1{font-size:28px;}
+      .shopGrid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+
+<body>
+<header class="header" id="top">
+  <div class="container">
+    <div class="topRow">
+      <a class="brand" href="./cafe.html">
+        <span class="logo">P</span>
+        <span>카페피피피</span>
+      </a>
+    </div>
+
+    <!-- ✅ 메뉴: 기존 탭 + 매점 추가 (매점만 primary) -->
+    <div class="menuRow">
+      <a class="btn" href="./cafe.html">카페</a>
+      <a class="btn" href="./school.html">스쿨</a>
+      <a class="btn" href="./escape.html">방탈출</a>
+      <a class="btn" href="./discount.html">할인</a>
+      <a class="btn primary" href="./shop.html">매점</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="heroMain">
+    <h1>매점</h1>
+  </section>
+
+  <div class="sectionTitle">
+    <h2>인기 상품</h2>
+  </div>
+
+  <!-- ✅ 상품 카드 (이미지 있으면 ./images/ 에 넣고 파일명만 바꾸면 됨) -->
+  <section class="shopGrid">
+    <a class="shopItem" href="#">
+      <article class="card">
+        <div class="thumb"><img src="./images/shop-item-1.png" alt="간식 세트"></div>
+        <h3>간식 세트</h3>
+        <p class="muted">구성/옵션 준비중</p>
+        <div class="price">₩ 0</div>
+      </article>
+    </a>
+
+    <a class="shopItem" href="#">
+      <article class="card">
+        <div class="thumb"><img src="./images/shop-item-2.png" alt="음료/커피"></div>
+        <h3>음료/커피</h3>
+        <p class="muted">시그니처 메뉴</p>
+        <div class="price">₩ 0</div>
+      </article>
+    </a>
+
+    <a class="shopItem" href="#">
+      <article class="card">
+        <div class="thumb"><img src="./images/shop-item-3.png" alt="굿즈"></div>
+        <h3>굿즈</h3>
+        <p class="muted">한정 굿즈 준비중</p>
+        <div class="price">₩ 0</div>
+      </article>
+    </a>
+  </section>
+
+  <div class="sectionTitle" style="margin-top:40px;">
+    <h2>안내</h2>
+  </div>
+  <article class="card">
+    <p class="muted" style="margin:0;">
+      매점 상품/가격/구매 방식은 오픈 준비 중입니다.
+    </p>
+  </article>
+
+  <footer class="footer">
+    © <span id="year"></span> CafePPP
+  </footer>
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
