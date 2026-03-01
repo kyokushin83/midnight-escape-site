@@ -8,7 +8,27 @@
 <link rel="stylesheet" href="./assets/style.css" />
 
 <style>
-/* ===== 상단 쇼츠 영상 ===== */
+/* ===== 헤더 2줄 구조 ===== */
+
+.logoRow{
+  display:flex;
+  justify-content:center;
+  padding:18px 0 8px;
+}
+
+.menuRow{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  padding-bottom:14px;
+  flex-wrap:wrap;
+}
+
+.menuRow .btn{
+  font-weight:700;
+}
+  
+  /* ===== 상단 쇼츠 영상 ===== */
 .topVideo{
   width:100%;
   margin:18px 0 18px;
@@ -134,20 +154,23 @@
 
 <header class="header" id="top">
   <div class="container">
-    <div class="inner">
+    
+    <!-- 로고 줄 -->
+    <div class="logoRow">
       <a class="brand" href="#top">
         <span class="logo">P</span>
         <span>카페피피피</span>
       </a>
-
-      <!-- ✅ 메뉴 탭 변경: 카페 / 스쿨 / 방탈출 / 할인 -->
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn" href="#cafe">카페</a>
-        <a class="btn" href="#school">스쿨</a>
-        <a class="btn" href="#escape">방탈출</a>
-        <a class="btn primary" href="#discount">할인</a>
-      </div>
     </div>
+
+    <!-- 메뉴 줄 (한 줄 아래) -->
+    <div class="menuRow">
+      <a class="btn" href="#cafe">카페</a>
+      <a class="btn" href="#school">스쿨</a>
+      <a class="btn" href="#escape">방탈출</a>
+      <a class="btn primary" href="#discount">할인</a>
+    </div>
+
   </div>
 </header>
 
