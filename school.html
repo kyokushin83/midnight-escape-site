@@ -42,24 +42,29 @@
     }
 
     /* ===== 헤더 2줄 구조 (왼쪽 정렬 유지) ===== */
-    .topRow{
-      display:flex;
-      align-items:center;
-      justify-content:flex-start; /* 🔥 왼쪽 정렬 */
-      padding:18px 0 6px;
-    }
+.topRow{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding:18px 0 16px;  /* 👈 6px → 16px */
+}
 
-    .menuRow{
-      display:flex;
-      gap:12px;
-      justify-content:flex-start; /* 🔥 가운데 아님 */
-      padding-bottom:14px;
-      flex-wrap:wrap;
-    }
+.menuRow{
+  display:flex;
+  gap:12px;
+  justify-content:flex-start;
+  padding-bottom:14px;
+  flex-wrap:nowrap;       /* 줄바꿈 금지 */
+  overflow-x:auto;        /* 가로 스크롤 허용 */
+}
 
-    .menuRow .btn{
-      font-weight:700;
-    }
+.menuRow::-webkit-scrollbar{
+  display:none;
+}
+
+ .menuRow .btn{
+  white-space: nowrap;   /* ✅ 글자 줄바꿈 금지 */
+}
 
     /* ===== 상단 쇼츠 영상 ===== */
     .topVideo{
