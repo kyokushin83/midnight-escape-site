@@ -8,18 +8,19 @@
 <link rel="stylesheet" href="./assets/style.css" />
 
 <style>
-/* ===== 헤더 2줄 구조 ===== */
+/* ===== 헤더 2줄 구조 (왼쪽 정렬 유지) ===== */
 
-.logoRow{
+.topRow{
   display:flex;
-  justify-content:center;
-  padding:18px 0 8px;
+  align-items:center;
+  justify-content:flex-start; /* 🔥 왼쪽 정렬 */
+  padding:18px 0 6px;
 }
 
 .menuRow{
   display:flex;
-  justify-content:center;
   gap:12px;
+  justify-content:flex-start; /* 🔥 가운데 아님 */
   padding-bottom:14px;
   flex-wrap:wrap;
 }
@@ -154,16 +155,16 @@
 
 <header class="header" id="top">
   <div class="container">
-    
-    <!-- 로고 줄 -->
-    <div class="logoRow">
+
+    <!-- 첫 줄: 로고 (기존처럼 왼쪽) -->
+    <div class="topRow">
       <a class="brand" href="#top">
         <span class="logo">P</span>
         <span>카페피피피</span>
       </a>
     </div>
 
-    <!-- 메뉴 줄 (한 줄 아래) -->
+    <!-- 둘째 줄: 메뉴 -->
     <div class="menuRow">
       <a class="btn" href="#cafe">카페</a>
       <a class="btn" href="#school">스쿨</a>
