@@ -1,261 +1,162 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>카페ppp | 500평 규모의 체험형 플레이스</title>
-  <meta name="description" content="카페·키즈·병원·미용·용품까지, 반려동물 매장을 연결하는 카페ppp." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>카페ppp | 500평 규모의 체험형 플레이스</title>
+<meta name="description" content="500평 규모의 직영 체험형 공간 카페ppp." />
+<link rel="stylesheet" href="./assets/style.css" />
 
-  <!-- ✅ 공통 CSS 연결 -->
-  <link rel="stylesheet" href="./assets/style.css" />
-
-  <!-- ✅ index 전용 약간의 스타일(필요 최소) -->
-  <style>
-    /* style.css는 공통, 아래는 index 전용 보충 */
+<style>
 .heroMain{
+  position:relative;
   margin:18px 0;
   border:1px solid var(--line);
   border-radius: calc(var(--radius) + 8px);
   overflow:hidden;
-  background:#091221;
 }
 
-/* ✅ 이미지가 절대 안 잘리게 */
-.heroMain .cover{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:14px;
-  background: rgba(255,255,255,.03);
-}
-
-/* ✅ 핵심: contain + auto height */
-.heroMain .heroImg{
+/* 이미지 */
+.heroMain img{
   width:100%;
   height:auto;
-  max-width: 980px;
-  max-height: 520px;
-  object-fit: contain;
   display:block;
 }
 
-/* 이미지 아래 텍스트 영역 */
-.heroMain .heroText{
-  padding: 0 18px 18px;
+/* 이미지 위 어두운 오버레이 */
+.heroOverlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.3));
 }
 
-.heroMain .heroText h1{
-  font-size: 28px;
-  margin: 10px 0 6px;
-  letter-spacing: -.02em;
+/* 이미지 위 텍스트 */
+.heroContent{
+  position:absolute;
+  bottom:30px;
+  left:30px;
+  right:30px;
+  color:#fff;
 }
 
-.heroMain .heroText p{
+.heroContent h1{
+  margin:0 0 8px;
+  font-size:34px;
+  letter-spacing:-.02em;
+}
+
+.heroContent p{
   margin:0;
-  color: rgba(229,231,235,.88);
-  font-weight:650;
+  font-weight:600;
+  opacity:.9;
 }
-
-.heroMain .actions{margin-top:14px}
 
 .sectionTitle{
-  display:flex; align-items:flex-end; justify-content:space-between;
-  gap:12px; flex-wrap:wrap;
-  margin:26px 0 12px;
+  margin:30px 0 14px;
 }
-.sectionTitle h2{margin:0; font-size:22px; letter-spacing:-.02em}
-.sectionTitle .muted{margin:0}
 
-.eventGrid{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
-.storeGrid{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
+.sectionTitle h2{
+  margin:0;
+  font-size:22px;
+}
+
+.storeGrid{
+  display:grid;
+  gap:14px;
+  grid-template-columns:repeat(3,1fr);
+}
+
 .storeCardThumb{
   height:150px;
-  background:#0b1220;
   background-size:cover;
   background-position:center;
-  border-radius: 12px;
+  border-radius:12px;
   border:1px solid var(--line);
 }
 
-.filterRow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 12px}
-.filterBtn{
-  padding:8px 12px; border-radius:999px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.03);
-  color:var(--muted);
-  cursor:pointer; font-weight:900; font-size:13px;
+@media (max-width:900px){
+  .heroContent h1{font-size:24px;}
+  .storeGrid{grid-template-columns:1fr;}
 }
-.filterBtn.active{
-  background: rgba(34,197,94,.18);
-  border-color: rgba(34,197,94,.35);
-  color: var(--text);
-}
-
-@media (max-width: 900px){
-  .heroMain .heroImg{max-height: 420px;}
-  .heroMain .heroText h1{font-size:24px;}
-  .eventGrid,.storeGrid{grid-template-columns:1fr}
-}
-  </style>
+</style>
 </head>
 
 <body>
-  <!-- 상단 -->
-  <header class="header" id="top">
-    <div class="container">
-      <div class="inner">
-        <a class="brand" href="#top">
-          <span class="logo">P</span>
-          <span>카페ppp</span>
-        </a>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="#events">이벤트</a>
-          <a class="btn primary" href="#stores">매장 둘러보기</a>
-        </div>
-      </div>
-    </div>
-  </header>
 
-  <main class="container">
-    <!-- 메인 배너(이미지 하나만 쓰는 심플 버전) -->
-    <section class="heroMain">
-    <div class="cover">
-  <img class="heroImg" src="./images/cafeppp.png" alt="카페ppp 메인 배너" />
+<header class="header">
+  <div class="container">
+    <div class="inner">
+      <a class="brand" href="#">
+        <span class="logo">P</span>
+        <span>카페ppp</span>
+      </a>
+      <a class="btn primary" href="#stores">직영 매장 보기</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 🔥 메인 배너 -->
+<section class="heroMain">
+  <img src="./images/cafeppp.png" alt="카페ppp 메인 이미지" />
+  <div class="heroOverlay"></div>
+
+  <div class="heroContent">
+    <h1>500평 규모의 체험형 플레이스</h1>
+    <p>카페ppp</p>
+  </div>
+</section>
+
+
+<!-- 🔥 직영 매장 바로 붙임 -->
+<div class="sectionTitle" id="stores">
+  <h2>직영 매장</h2>
 </div>
 
-<!-- 이미지 아래에 텍스트/버튼을 따로 둠 (이미지 위에 덮지 않음) -->
-<div class="heroText">
-  <h1>500평 규모의 체험형 플레이스, 카페ppp</h1>
-  <p>카페·키즈·병원·미용·용품까지 다양한 매장을 연결해 한 번에 탐색합니다.</p>
-  <div class="actions">
-    <a class="btn primary" href="#stores">제휴 매장 보기</a>
-    <a class="btn" href="#partner">제휴 문의</a>
-  </div>
-</div>  
-    </section>
+<section class="storeGrid">
 
-    <!-- 소개 -->
-    <section id="about" class="card">
-      <h2 style="margin:0 0 10px;">카페ppp은 이렇게 운영돼요</h2>
-      <p class="muted" style="margin:0;">
-        동네 곳곳의 제휴 매장을 모아 보여주고, 이벤트/체험 요소로 방문 동기를 만드는 연합형 플랫폼입니다.
-        (방탈출·미션·스탬프는 추후 확장)
-      </p>
-      <div class="tags" style="margin-top:12px;">
-        <span class="tag">연합형 O2O</span>
-        <span class="tag">체험/게임 요소</span>
-        <span class="tag">케어·의료 연계</span>
-      </div>
-    </section>
+  <article class="card">
+    <div class="storeCardThumb" style="background-image:url('./images/catcafe_cover.jpg');"></div>
+    <h3>고양이카페</h3>
+  </article>
 
-    <!-- 이달의 이벤트 -->
-    <div class="sectionTitle" id="events">
-      <div>
-        <h2>이달의 이벤트</h2>
-        <p class="muted">이 영역은 매달 카드만 바꾸면 됩니다.</p>
-      </div>
-      <a class="btn" href="#partner">이벤트 제휴 문의</a>
-    </div>
+  <article class="card">
+    <div class="storeCardThumb" style="background-image:url('./images/parrot.jpg');"></div>
+    <h3>앵무새카페</h3>
+  </article>
 
-    <section class="eventGrid">
-      <article class="card">
-        <h3 style="margin:0 0 6px;">3월 이벤트(예시)</h3>
-        <p class="muted" style="margin:0 0 10px;">기간: 2026.03.01 ~ 03.31</p>
-        <p class="muted" style="margin:0;">쿠폰/미션/체험 이벤트 내용을 넣는 카드입니다.</p>
-      </article>
+  <article class="card">
+    <div class="storeCardThumb" style="background-image:url('./images/rabbit.jpg');"></div>
+    <h3>토끼카페</h3>
+  </article>
 
-      <article class="card">
-        <h3 style="margin:0 0 6px;">신규 제휴 매장 홍보</h3>
-        <p class="muted" style="margin:0 0 10px;">상시</p>
-        <p class="muted" style="margin:0;">새로 들어온 매장을 홈에서 띄우면 좋아요.</p>
-      </article>
+  <article class="card">
+    <div class="storeCardThumb" style="background-image:url('./images/dogcafe.jpg');"></div>
+    <h3>애견카페</h3>
+  </article>
 
-      <article class="card">
-        <h3 style="margin:0 0 6px;">스탬프 미션(Coming soon)</h3>
-        <p class="muted" style="margin:0 0 10px;">예고</p>
-        <p class="muted" style="margin:0;">추후 기능을 예고하는 카드로 신뢰/기대감 형성.</p>
-      </article>
-    </section>
+  <article class="card">
+    <div class="storeCardThumb" style="background-image:url('./images/kids.jpg');"></div>
+    <h3>애니멀 키즈카페</h3>
+  </article>
 
-    <!-- 매장 -->
-    <div class="sectionTitle" id="stores">
-      <div>
-        <h2>제휴 매장</h2>
-        <p class="muted">현재 12+ · 계속 늘어나는 중</p>
-      </div>
-    </div>
+  <article class="card">
+    <div class="storeCardThumb" style="background-image:url('./images/hospital.jpg');"></div>
+    <h3>동물병원</h3>
+  </article>
 
-    <!-- (선택) 간단 필터 UI: 지금은 동작 안 해도 되고, 나중에 JS 붙이면 됨 -->
-    <div class="filterRow" aria-label="카테고리 필터(임시)">
-      <button class="filterBtn active" type="button">전체</button>
-      <button class="filterBtn" type="button">동물카페</button>
-      <button class="filterBtn" type="button">체험·놀이</button>
-      <button class="filterBtn" type="button">케어·의료</button>
-      <button class="filterBtn" type="button">리테일</button>
-    </div>
+</section>
 
-    <section class="storeGrid">
-      <!-- ✅ stores 폴더의 고양이카페 페이지로 연결 -->
-      <article class="card">
-        <div class="storeCardThumb" style="background-image:url('./images/catcafe_cover.jpg');"></div>
-        <h3 style="margin:10px 0 4px;">고양이카페</h3>
-        <p class="muted" style="margin:0;">동물카페 · (지역 입력)</p>
-        <div class="tags" style="margin-top:10px;">
-          <span class="tag">실내</span>
-          <span class="tag">키즈친화</span>
-          <span class="tag">예약선택</span>
-        </div>
-        <div class="actions" style="margin-top:12px;">
-          <a class="btn primary" href="./stores/cat-cafe.html">상세 보기</a>
-        </div>
-      </article>
+<footer class="footer">
+  © <span id="year"></span> CafePPP
+</footer>
 
-      <!-- 아래는 예시 카드(추후 stores/ 폴더에 페이지 만들면 링크만 바꾸면 됨) -->
-      <article class="card">
-        <div class="storeCardThumb" style="background-image:url('./images/store_placeholder.jpg');"></div>
-        <h3 style="margin:10px 0 4px;">(다음 매장)</h3>
-        <p class="muted" style="margin:0;">카테고리 · 지역</p>
-        <div class="tags" style="margin-top:10px;">
-          <span class="tag">태그1</span><span class="tag">태그2</span><span class="tag">태그3</span>
-        </div>
-        <p class="muted" style="margin:12px 0 0;">* stores/에 페이지 만들고 링크만 연결</p>
-      </article>
+</main>
 
-      <article class="card">
-        <div class="storeCardThumb" style="background-image:url('./images/store_placeholder.jpg');"></div>
-        <h3 style="margin:10px 0 4px;">(다음 매장)</h3>
-        <p class="muted" style="margin:0;">카테고리 · 지역</p>
-        <div class="tags" style="margin-top:10px;">
-          <span class="tag">태그1</span><span class="tag">태그2</span><span class="tag">태그3</span>
-        </div>
-      </article>
-    </section>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
-    <!-- 제휴 문의 -->
-    <div class="sectionTitle" id="partner">
-      <div>
-        <h2>제휴/입점 문의</h2>
-        <p class="muted">초기에는 메일/폼 링크만 있어도 충분합니다.</p>
-      </div>
-    </div>
-
-    <section class="card">
-      <p class="muted" style="margin:0 0 12px;">
-        제휴 문의는 아래 메일로 보내주세요. (추후 구글폼/네이버폼 링크로 교체 가능)
-      </p>
-      <div class="actions">
-        <a class="btn primary" href="mailto:contact@petstation.co.kr?subject=%ED%8E%AB%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%85%98%20%EC%A0%9C%ED%9C%B4%20%EB%AC%B8%EC%9D%98">메일로 문의</a>
-        <a class="btn" href="#top">상단으로</a>
-      </div>
-    </section>
-
-    <footer class="footer">
-      © <span id="year"></span> PetStation · All rights reserved.
-    </footer>
-  </main>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
