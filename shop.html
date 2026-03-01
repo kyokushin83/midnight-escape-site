@@ -9,20 +9,27 @@
 
   <style>
     /* 기존 페이지들과 톤 맞추기 (필요 최소만) */
-    .topRow{
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      padding:18px 0 6px;
-    }
-    .menuRow{
-      display:flex;
-      gap:12px;
-      justify-content:flex-start;
-      padding-bottom:14px;
-      flex-wrap:wrap;
-    }
-    .menuRow .btn{font-weight:700;}
+.topRow{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding:18px 0 6px;
+}
+.menuRow{
+  display:flex;
+  gap:12px;
+  justify-content:flex-start;
+  padding-bottom:14px;
+  flex-wrap:nowrap;       /* 줄바꿈 금지 */
+  overflow-x:auto;        /* 가로 스크롤 허용 */
+}
+
+.menuRow::-webkit-scrollbar{
+  display:none;
+}
+   .menuRow .btn{
+  white-space: nowrap;   /* ✅ 글자 줄바꿈 금지 */
+}
 
     .heroMain{
       padding: 26px 0 10px;
